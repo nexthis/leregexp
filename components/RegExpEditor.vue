@@ -5,12 +5,14 @@ function highlightCode(code?: string) {
     if (!code) return '';
     let group = 0;
     return code
+        .replace(/\s/g, "&nbsp;") // Whitespace 
         .replace(/(^\/)|(\/(?:.(?!\/))+$|\/$)/g, (text) => `<span class="primary">${text}</span>`) // Close and Open tag + falgs 
         .replace(/\*|\$|\^|\.|\||\[|\]|\?/g, (text) =>  `<span class="base">${text}</span>`) // Keywords
         .replace(/\(([^\)]+)\)/g, (text) =>  {
             group++;
             return `<span style="background-color: ${groupColors(group, 0.6)}">${text}</span>`
         }) //Groups 
+        
 
 
         // .replace(/(\/\*.*?\*\/|\/\/.*?$)/gm, '<span class="comment">$1</span>') // Comments

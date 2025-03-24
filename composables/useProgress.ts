@@ -5,12 +5,19 @@ interface StateInterface {
     current: number
 }
 
+function loadData(): StateInterface {
+    const data = JSON.parse(localStorage.getItem('state') ?? '{ "complited": [], "current": 0}')
+    return data 
+}
+
+function saveData(value: StateInterface) {
+    localStorage.setItem('state', JSON.stringify(value))
+}
 
 const useData = () => {
-    return useCookie<StateInterface>('state', {
-        default: () =>  ({ complited: [], current: 0} ),
-        maxAge: 34560000,
-    })
+    const state = useState<StateInterface>('state', () => loadData() )
+    watchEffect(() => saveData(state.value))
+    return state
 }
 
 
