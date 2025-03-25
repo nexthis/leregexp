@@ -6,7 +6,7 @@ const props = defineProps<{
     search: string
 }>()
 
-const positions = ref<Array<GroupItemIterface>>([])
+const positions = ref<Array<GroupItemInterface>>([])
 const content = computed(() => highlightCode())
 
 const text = props.text.replaceAll("\\n", "\n");
@@ -59,13 +59,13 @@ function highlightCode() {
 
 
 
-function createGroupItem(items: RegExpMatchArray): GroupItemIterface[] {
+function createGroupItem(items: RegExpMatchArray): GroupItemInterface[] {
 
   if ( items.length === 1) {
     return [{ match: items[0], start: items.index!, end: items.index! + items[0].length, group: 0 }]
   }
 
-  const result: GroupItemIterface[] = [];
+  const result: GroupItemInterface[] = [];
   const currentIndex = items.index ?? 0;
   let lastShift = 0
 
@@ -74,12 +74,11 @@ function createGroupItem(items: RegExpMatchArray): GroupItemIterface[] {
 
 
     if (!groupItem)  {
-        // console.log(items);
-        // const start = items[0].length + currentIndex;
-        // const end = items[0].length + currentIndex;
-      //  console.log(items, "Test");
-        
-      //  result.push({ match: items[0], start: items.index!, end: items.index! + items[0].length, group: 0 })
+        //Check is items has only one item, is mean that item don't have group 
+        if(items.filter(n => n).length === 1){
+          result.push({ match: items[0], start: items.index!, end: items.index! + items[0].length, group: 0 })
+        }
+
         continue
     };
 

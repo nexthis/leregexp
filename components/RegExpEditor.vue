@@ -26,7 +26,7 @@ const highlightedCode = computed(() => highlightCode(model.value));
 
 <template>
     <div class="relative min-h-11">
-        <input :value="model" @input="(e) => model = e.target.value" class="absolute block text-transparent bg-transparent caret-white left-0 right-0 p-2.5 w-full h-full border-gray-600 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500" placeholder="/regex/" >
+        <input :value="model" class="absolute block text-transparent bg-transparent caret-white left-0 right-0 p-2.5 w-full h-full border-gray-600 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500" placeholder="/regex/" @input="(e) => model = e.target.value" >
         <div class=" w-full min-h-11 p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white rounded-md highlight" v-html="highlightedCode" />
     </div>
 </template>

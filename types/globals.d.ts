@@ -1,4 +1,4 @@
-interface GroupItemIterface {
+interface GroupItemInterface {
     match: string
     start: number
     end: number
