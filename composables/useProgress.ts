@@ -6,7 +6,7 @@ interface StateInterface {
 }
 
 function loadData(): StateInterface {
-    const data = JSON.parse(localStorage.getItem('state') ?? '{ "complited": [], "current": 0}')
+    const data = JSON.parse(localStorage.getItem('state') ?? '{ "complied": [], "current": 0}')
     return data 
 }
 
