@@ -72,6 +72,18 @@ function createGroupItem(items: RegExpMatchArray): GroupItemIterface[] {
   for (let index = 1; index < items.length; index++) {
     const groupItem = items[index];
 
+
+    if (!groupItem)  {
+        // console.log(items);
+        // const start = items[0].length + currentIndex;
+        // const end = items[0].length + currentIndex;
+      //  console.log(items, "Test");
+        
+      //  result.push({ match: items[0], start: items.index!, end: items.index! + items[0].length, group: 0 })
+        continue
+    };
+
+
     const last = result?.[index-2+lastShift];
 
     // Calculate start position by finding the position of the current group (search in string)
@@ -81,7 +93,7 @@ function createGroupItem(items: RegExpMatchArray): GroupItemIterface[] {
 
     //start index = index in full text + section of a section of text
     const start = currentIndex + groupStart
-    
+
     //end index = index in full text + section of a section of text (groupStart) + groupStart length
     const end = currentIndex + groupStart + groupItem.length
 
