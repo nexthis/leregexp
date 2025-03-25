@@ -1,12 +1,12 @@
 
 
 interface StateInterface {
-    complied: Array<string>
+    completed: Array<string>
     current: number
 }
 
 function loadData(): StateInterface {
-    const data = JSON.parse(localStorage.getItem('state') ?? '{ "complied": [], "current": 0}')
+    const data = JSON.parse(localStorage.getItem('state') ?? '{ "completed": [], "current": 0}')
     return data 
 }
 
@@ -28,7 +28,7 @@ export async function useProgress() {
 
     const { data: pages } = await useTasks()
     
-    const complied = computed(() => data.value.complied)
+    const completed = computed(() => data.value.completed)
     const next =  computed(() => pages.value ? pages.value[data.value.current + 1] : undefined)
     const previous =  computed(() => pages.value ? pages.value[data.value.current - 1] : undefined)
 
@@ -41,10 +41,10 @@ export async function useProgress() {
         const current = pages.value.findIndex((item) => item.id === id)
         const next = pages.value[current + 1]
         
-        console.log(data.value.complied.includes(pages.value[current]?.id), pages.value[current]?.id,data.value.complied );
+        console.log(data.value.completed.includes(pages.value[current]?.id), pages.value[current]?.id,data.value.completed );
         
-        if(!data.value.complied.includes(id)){
-            data.value.complied.push(id)
+        if(!data.value.completed.includes(id)){
+            data.value.completed.push(id)
             data.value.current = current + 1;
         }
 
@@ -55,5 +55,5 @@ export async function useProgress() {
     }
 
 
-    return {complied, next, previous, complete}
+    return {completed, next, previous, complete}
 }

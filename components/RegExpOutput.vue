@@ -46,10 +46,10 @@ function highlightCode() {
         const style = match.length ? `style="color:${groupColors(group)}"` : `class="text-red-500 animate-pulse"`;
         const text =  match.length ? match : '|';
 
-        
         const before = highlightedText.slice(0, start + offset);
         const middle = `<span ${style}>${text}</span>`;
         const after = highlightedText.slice(end + offset);
+
         highlightedText = before + middle + after;
         offset += middle.length - match.length;
     });
@@ -61,6 +61,7 @@ function highlightCode() {
 
 function createGroupItem(items: RegExpMatchArray): GroupItemInterface[] {
 
+  //This item has no groups, so it can be skipped
   if ( items.length === 1) {
     return [{ match: items[0], start: items.index!, end: items.index! + items[0].length, group: 0 }]
   }
@@ -83,6 +84,7 @@ function createGroupItem(items: RegExpMatchArray): GroupItemInterface[] {
     };
 
 
+    // +lastShift Gives you the ability to skip items that have been added twice (in the same iteration)
     const last = result?.[index-2+lastShift];
 
     // Calculate start position by finding the position of the current group (search in string)
@@ -97,7 +99,7 @@ function createGroupItem(items: RegExpMatchArray): GroupItemInterface[] {
     const end = currentIndex + groupStart + groupItem.length
 
 
-    //When is not a part of regex grup 
+    //When is not a part of regex group 
     if(last && last.end !== start){
 
         lastShift++;
