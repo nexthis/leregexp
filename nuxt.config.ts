@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  ssr: process.env.NODE_ENV === 'production',
+  ssr: false,
   modules: [
     '@nuxt/content',
     '@nuxt/eslint',

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { data: pages } = await useTasks()
 
-const {complited} = await useProgress()
+const {complied} = await useProgress()
 
 useSeoMeta({
     title: "Your regex adventure! ",
@@ -21,7 +21,7 @@ useSeoMeta({
         <p class="mt-5 text-center font-bold text-lg">List of exercises</p>
         <nav class="mt-3">
             <ul class="flex flex-col gap-4 ">
-                <li v-for="item in pages" :key="item.id" :class="{'bg-green-700 hover:bg-green-600': complited.includes(item.id)}" class="focus:ring-blue-500 focus:border-blue-500 block w-full bg-gray-700 hover:bg-gray-600 transition-colors border-gray-600 placeholder-gray-400 text-white rounded-md">
+                <li v-for="item in pages" :key="item.id" :class="{'bg-green-700 hover:bg-green-600': complied.includes(item.id)}" class="focus:ring-blue-500 focus:border-blue-500 block w-full bg-gray-700 hover:bg-gray-600 transition-colors border-gray-600 placeholder-gray-400 text-white rounded-md">
                     <NuxtLink class=" py-2.5 px-4 flex justify-between items-center" :to="item.path">
                         <span> {{ item.title }} </span>
 
