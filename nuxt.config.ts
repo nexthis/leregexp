@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  ssr: false,
+  ssr: process.env.NODE_ENV === 'production',
   modules: [
     '@nuxt/content',
     '@nuxt/eslint',
@@ -14,3 +14,4 @@ export default defineNuxtConfig({
     cssPath: '~/assets/scss/index.scss',
   },
 })
+
