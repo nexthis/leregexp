@@ -38,7 +38,7 @@ useSeoMeta({
         </div>
 
         <RegExpEditor  v-model="search"  />
-        <RegExpOutput v-model="search" :text="text"/>
+        <RegExpOutput :search="search" :text="text"/>
         <div v-if="page" class="mt-5 flex justify-center">
             <button type="button" :disabled="!isComplete" class="focus:outline-none text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 bg-green-600 disabled:bg-black/30 hover:bg-green-700 focus:ring-green-800" @click="() => complete(page!.id)">Complete</button>
         </div>

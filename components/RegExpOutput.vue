@@ -2,10 +2,10 @@
 
 
 const props = defineProps<{
-    text: string
+    text: string,
+    search: string
 }>()
 
-const model = defineModel<string>()
 const positions = ref<Array<GroupItemIterface>>([])
 const content = computed(() => highlightCode())
 
@@ -14,10 +14,10 @@ const text = props.text.replaceAll("\\n", "\n");
 watchEffect(() => {
     positions.value.length = 0
 
-    if(!model.value) return
+    if(!props.search) return
 
-    const flags = model.value.replace(/.*\/(?!.*(.).*\1)([gimy]*)$/, '$2');
-    const pattern = model.value.replace(new RegExp('^/(.*?)/'+flags+'$'), '$1');
+    const flags = props.search.replace(/.*\/(?!.*(.).*\1)([gimy]*)$/, '$2');
+    const pattern = props.search.replace(new RegExp('^/(.*?)/'+flags+'$'), '$1');
     const regex = safeRegExp(pattern, flags);
 
     if(!regex){
