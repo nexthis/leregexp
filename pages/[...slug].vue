@@ -8,8 +8,17 @@ const { data: page } = await useAsyncData(route.path, () => {
 
 const {complete} = await useProgress()
 
-const text = ref( page.value?.data.replaceAll("\\n", "\n") as string ?? "");
+const text = getText();
 const search = ref("")
+
+
+function getText() {
+    if(!page.value) return ["ERROR: DATA NOT FOUND"];
+    if(Array.isArray(page.value.data)){
+        return page.value.data.map(item => item.replaceAll("\\n", "\n"))
+    }
+    return [page.value.data.replaceAll("\\n", "\n")]
+}
 
 
 const isComplete = computed(() => {
@@ -20,7 +29,7 @@ const isComplete = computed(() => {
     
 
     if(!regex || !regexSolution) return false
-    return text.value.replace(regex, "") === text.value.replace(regexSolution, "")
+    return text.every(item => item.replace(regex, "") === item.replace(regexSolution, ""))//text.value.replace(regex, "") === text.value.replace(regexSolution, "")
 })
 
 useSeoMeta({
@@ -38,7 +47,8 @@ useSeoMeta({
         </div>
 
         <RegExpEditor  v-model="search"  />
-        <RegExpOutput :search="search" :text="text"/>
+        
+        <RegExpOutput v-for="item of text" :key="item" :search="search" :text="item"/>
         <div v-if="page" class="mt-5 flex justify-center">
             <button type="button" :disabled="!isComplete" class="focus:outline-none text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 bg-green-600 disabled:bg-black/30 hover:bg-green-700 focus:ring-green-800" @click="() => complete(page!.id)">Complete</button>
         </div>

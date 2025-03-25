@@ -8,7 +8,7 @@ export default defineContentConfig({
       schema: z.object({
         difficulty: z.number(),
         solution: z.array(z.string()),
-        data: z.string(),
+        data: z.union([z.string(), z.array(z.string())]) ,
       })
     })
   }

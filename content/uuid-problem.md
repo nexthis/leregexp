@@ -1,7 +1,7 @@
 ---
 title: "Uuid problem"
 description: "Uuid problem"
-difficulty: 30
+difficulty: 50
 solution: ["(\\w{8})[-]?(\\w{4})[-]?(\\w{4})[-]?(\\w{4})[-]?(\\w{12})", "g"]
 data: >
     ac117c81-23a4-43ba-b37f-3d312eb69998

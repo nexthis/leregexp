@@ -1,7 +1,7 @@
 ---
 title: "Hidden message"
 description: "Hidden message"
-difficulty: 15
+difficulty: 24
 solution: ["\\w+$", "gm"]
 data: |
     New ideas often start but dont
