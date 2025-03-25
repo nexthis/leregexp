@@ -28,12 +28,12 @@ watchEffect(() => {
     if(!regex.global){
         const match = text.match(regex)
         if(match === null) return
-        positions.value.push(createGroupItem(match));
+        positions.value.push(...createGroupItem(match));
         return
     }
     
     for (const match of text.matchAll(regex)) {
-        positions.value.push(createGroupItem(match));
+        positions.value.push(...createGroupItem(match));
     }
 })
 
@@ -43,11 +43,10 @@ function highlightCode() {
     let offset = 0;
 
     positions.value.forEach(({ start, end, match, group }) => {
-
-
         const style = match.length ? `style="color:${groupColors(group)}"` : `class="text-red-500 animate-pulse"`;
         const text =  match.length ? match : '|';
 
+        
         const before = highlightedText.slice(0, start + offset);
         const middle = `<span ${style}>${text}</span>`;
         const after = highlightedText.slice(end + offset);
@@ -60,16 +59,57 @@ function highlightCode() {
 
 
 
-function createGroupItem(item: RegExpMatchArray): GroupItemIterface{
+function createGroupItem(items: RegExpMatchArray): GroupItemIterface[] {
 
-    const group = item.findIndex((value, index) => {
-        return value === item[0] && index !== 0
+  if ( items.length === 1) {
+    return [{ match: items[0], start: items.index!, end: items.index! + items[0].length, group: 0 }]
+  }
+
+  const result: GroupItemIterface[] = [];
+  const currentIndex = items.index ?? 0;
+  let lastShift = 0
+
+  for (let index = 1; index < items.length; index++) {
+    const groupItem = items[index];
+
+    const last = result?.[index-2+lastShift];
+
+    // Calculate start position by finding the position of the current group (search in string)
+    const groupStart = items[0].indexOf(groupItem, 
+      items.slice(1, index).reduce((acc, cur) => acc + (cur?.length || 0), 0)
+    );
+
+    //start index = index in full text + section of a section of text
+    const start = currentIndex + groupStart
+    
+    //end index = index in full text + section of a section of text (groupStart) + groupStart length
+    const end = currentIndex + groupStart + groupItem.length
+
+
+    //When is not a part of regex grup 
+    if(last && last.end !== start){
+
+        lastShift++;
+        result.push({
+            match: items[0].slice(last.end, groupStart),
+            start: last.end,
+            end: groupStart,
+            group: 0
+        });
+    }
+   
+    // Create group item entry
+    result.push({
+      match: groupItem,
+      start,
+      end,
+      group: index
     });
-
-    //Verifi if ! is ok 
-    return { match: item[0], start: item.index!, end: item.index! + item[0].length, group: group }
+  }
+  console.log(result);
+  
+  return result;
 }
-
 
 
 </script>
