@@ -16,6 +16,8 @@ data: >
     
     12fa881a971243c2b60d394f46438f48
     
+    3f4a3k2e-4h5a2c3k4e5r-5u4u3i2d
+
     84d9f2fc-7b3e-4066-abb4-d992c72b8070
 
     97d6606d-7f8d-4e28-ba1e-96da6d561244
@@ -27,3 +29,5 @@ data: >
 ---
 
 In the REST API, you receive a merged list of UUIDs from 2 different providers. Your task is to check their correctness. [The correct UUID format is (8 characters) (- or space) (4 characters) (- or space) (4 characters) (- or space) (4 characters) (12 characters).]{class="text-yellow-500"}
+
+
