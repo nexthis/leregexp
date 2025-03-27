@@ -73,16 +73,14 @@ function createGroupItem(items: RegExpMatchArray): GroupItemInterface[] {
   for (let index = 1; index < items.length; index++) {
     const groupItem = items[index];
 
-
     if (!groupItem)  {
         //Check is items has only one item, is mean that item don't have group 
         if(items.filter(n => n).length === 1){
-          result.push({ match: items[0], start: items.index!, end: items.index! + items[0].length, group: 0 })
+          result.push({ match: items[0], start: currentIndex, end: currentIndex + items[0].length, group: 0 })
+          break
         }
-
         continue
     };
-
 
     // +lastShift Gives you the ability to skip items that have been added twice (in the same iteration)
     const last = result?.[index-2+lastShift];
@@ -98,19 +96,17 @@ function createGroupItem(items: RegExpMatchArray): GroupItemInterface[] {
     //end index = index in full text + section of a section of text (groupStart) + groupStart length
     const end = currentIndex + groupStart + groupItem.length
 
-
     //When is not a part of regex group 
     if(last && last.end !== start){
-
         lastShift++;
         result.push({
-            match: items[0].slice(last.end, groupStart),
+            match: items.input?.slice(last.end, start) ?? '',
             start: last.end,
-            end: groupStart,
+            end: start,
             group: 0
         });
     }
-   
+
     // Create group item entry
     result.push({
       match: groupItem,
