@@ -48,9 +48,6 @@ export async function useProgress() {
             data.value.current = current + 1;
         }
 
-
-        alert("!! JEJ !!")
-        console.log(next.path);
         await router.push(next.path)
     }
 

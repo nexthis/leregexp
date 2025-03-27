@@ -15,8 +15,6 @@ useSeoMeta({
         <h1 class="text-4xl mb-4">Hey, thanks for being here!</h1>
 
         <p class="mb-5">This project is loosely inspired by Rustlings, and its goal is to test your skills in using regex. It's also a great opportunity to start learning with "real" examples.</p>
-        <p class="mb-2">P.S. I deliberately skipped the most overused topics, like email validation, to better showcase other uses of regex.</p>
-        <p>P.S.2 Not all examples are realistic (especially the easiest ones).</p>
 
         <p class="mt-5 text-center font-bold text-lg">List of exercises</p>
         <nav class="mt-3">
