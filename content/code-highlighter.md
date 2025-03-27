@@ -2,7 +2,7 @@
 title: "Simple code highlighter"
 description: "Easy-to-Use Code Highlighter: Syntax Highlighting for Developers."
 difficulty: 5
-solution: ["function|return|if", "g"]
+solution: ["(function)|(return)|(if)", "g"]
 data: > 
     function hello() {
         if (regexp) {
