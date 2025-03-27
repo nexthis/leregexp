@@ -14,11 +14,13 @@ const surrender = ref(0)
 
 
 const isComplete = computed(() => {
-    const flags = search.value.replace(/.*\/(?!.*(.).*\1)([gimy]*)$/, '$2');
-    const pattern = search.value.replace(new RegExp('^/(.*?)/'+flags+'$'), '$1');
-    const regex = safeRegExp(pattern, flags);
-    const regexSolution = safeRegExp(page.value?.solution[0] ?? '', page.value?.solution[1])
     
+    const regexpObject = stringToRegExpObject(search.value)
+
+    if(!regexpObject) return false
+    
+    const regex = safeRegExp(regexpObject.pattern, regexpObject.flags);
+    const regexSolution = safeRegExp(page.value?.solution[0] ?? '', page.value?.solution[1])
 
     if(!regex || !regexSolution) return false
     return text.every(item => item.replace(regex, "") === item.replace(regexSolution, ""))//text.value.replace(regex, "") === text.value.replace(regexSolution, "")

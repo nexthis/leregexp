@@ -36,3 +36,16 @@ export function groupColors(value: number, opacity: number = 1) {
     return values?.[value] ?? values[0];
 }
   
+/**
+ * Convert regexp string eg: "/./gm" to regexp object {pattern: ".", flags: "gm"}, that help you create RegExp class 
+ */
+export function stringToRegExpObject(value: string){
+    const flags = value.replace(/.*\/(?!.*(.).*\1)([gimy]*)$/, '$2');
+    const patternRegexp = safeRegExp('^/(.*?)/'+flags+'$')
+
+    if (!patternRegexp) return undefined
+
+    const pattern = value.replace(patternRegexp, '$1');
+
+    return {pattern, flags}
+}

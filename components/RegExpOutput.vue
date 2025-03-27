@@ -16,9 +16,11 @@ watchEffect(() => {
 
     if(!props.search) return
 
-    const flags = props.search.replace(/.*\/(?!.*(.).*\1)([gimy]*)$/, '$2');
-    const pattern = props.search.replace(new RegExp('^/(.*?)/'+flags+'$'), '$1');
-    const regex = safeRegExp(pattern, flags);
+    const regexpObject = stringToRegExpObject(props.search)
+
+    if(!regexpObject) return false
+
+    const regex = safeRegExp(regexpObject.pattern, regexpObject.flags);
 
     if(!regex){
         console.log("Invalid RegExp");
