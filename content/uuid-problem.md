@@ -1,7 +1,7 @@
 ---
 title: "Uuid problem"
 description: "Uuid problem"
-difficulty: 50
+difficulty: 32
 solution: ["(\\w{8})[-]?(\\w{4})[-]?(\\w{4})[-]?(\\w{4})[-]?(\\w{12})", "g"]
 data: >
     ac117c81-23a4-43ba-b37f-3d312eb69998
@@ -26,4 +26,4 @@ data: >
 
 ---
 
-Hey, my "a" key on the keyboard is broken. Could you [highlight all double a]{class="text-yellow-500"} so I can make corrections?
+In the REST API, you receive a merged list of UUIDs from 2 different providers. Your task is to check their correctness. [The correct UUID format is (8 characters) (- or space) (4 characters) (- or space) (4 characters) (- or space) (4 characters) (12 characters).]{class="text-yellow-500"}

@@ -1,12 +1,10 @@
 ---
 title: "Simple password validation"
 description: "Simple password validation"
-difficulty: 21
-solution: ["\\d", "g"]
-data: | 
-        The sunli6t morning fe21lt fresh, as th14e birds chirped so8ftly. 
-        A ge7ntle breeze carr0ied the scent of blooming flowers.
+difficulty: 40
+solution: ["(?=.*?[A-Z]).{8,}", ""]
+data: [ 'short', 'SuperRegExpPassword2000', 'Test', 'teSt124342432', '123456789']
 ---
-
-
-There is a hidden pin in this text, find it. [Select only numbers]{class="text-yellow-500"}!
+Your task is to create a simple password validation that should include:
+- Has minimum 8 characters in length.
+- At least one uppercase letter form A to Z. 
