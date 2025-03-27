@@ -1,6 +1,6 @@
 ---
 title: "Run Command"
-description: "Run Command"
+description: "Extract Command from Input using Regex: Identify Executable Commands."
 difficulty: 22
 solution: ["(?<=[r|R]un:).*", ""]
 data: [ 'Run: ls', 'run: cat 🐱', 'run: nano', 'echo: logs.txt', 'ran: now']

@@ -1,6 +1,6 @@
 ---
 title: "Forgotten passwod"
-description: "Fix regex problem"
+description: "Regex Debugging and Troubleshooting: Identify and Fix Regular Expression Issues."
 difficulty: 3
 solution: ["[a-g]", "g"]
 data: | 

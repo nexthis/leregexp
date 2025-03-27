@@ -1,6 +1,6 @@
 ---
 title: "Enhanced password validation"  
-description: "Validate passwords with additional complexity requirements."  
+description: "Strengthen Password Security: Implement Password Validation with Complexity Rules."  
 difficulty: 60  
 solution: ["(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*]).{10,}", ""] 
 data: [ 'Pass123!', 'NoSpecialChar123', 'Short1!', 'Alllowercase!1', 'ValidPass#123' ]

@@ -1,6 +1,6 @@
 ---
 title: "Uuid problem"
-description: "Uuid problem"
+description: "UUID Validation and Correction: Ensure Proper Format for Merged UUID Lists."
 difficulty: 32
 solution: ["(\\w{8})[-]?(\\w{4})[-]?(\\w{4})[-]?(\\w{4})[-]?(\\w{12})", "g"]
 data: >

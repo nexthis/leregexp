@@ -1,6 +1,6 @@
 ---
 title: "Javascript string detection"
-description: "Javascript string detection"
+description: "JavaScript String Detection Techniques: Identify and Analyze Strings in JavaScript"
 difficulty: 70
 solution: ["(\"|')((?:\\\\\\1|(?:(?!\\1).))*)\\1", "g"]
 data: |

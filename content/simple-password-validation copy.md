@@ -1,6 +1,6 @@
 ---
 title: "Simple password validation"
-description: "Simple password validation"
+description: "Basic Password Validation Script: Implement Fundamental Password Checks."
 difficulty: 40
 solution: ["(?=.*?[A-Z]).{8,}", ""]
 data: [ 'short', 'SuperRegExpPassword2000', 'Test', 'teSt124342432', '123456789']

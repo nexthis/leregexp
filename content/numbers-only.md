@@ -1,6 +1,6 @@
 ---
 title: "Only numbers"
-description: "Only numbers"
+description: "Restrict Input to Numbers: Implement a Numeric-Only Filter."
 difficulty: 2
 solution: ["\\d", "g"]
 data: | 

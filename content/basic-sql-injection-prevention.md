@@ -1,6 +1,6 @@
 ---
 title: "Basic SQL Injection Prevention"  
-description: "Validate user input to prevent basic SQL injection attempts."  
+description: "Enhance Website Security with Input Validation: Prevent Basic SQL Injection Vulnerabilities."  
 difficulty: 50  
 solution: ["^[a-zA-Z0-9_]+$", ""]
 data: [ "JohnDoe", "admin'--", "user123", "DROP TABLE users;", "valid_username" ]

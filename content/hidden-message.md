@@ -1,6 +1,6 @@
 ---
 title: "Hidden message"
-description: "Hidden message"
+description: "Implement Hidden Message Functionality: Embed Secret Text or Data."
 difficulty: 24
 solution: ["\\w+$", "gm"]
 data: |
