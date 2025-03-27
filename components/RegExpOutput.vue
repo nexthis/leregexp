@@ -7,7 +7,7 @@ const props = defineProps<{
 }>()
 
 const positions = ref<Array<GroupItemInterface>>([])
-const invalid = ref(true)
+const invalid = ref(false)
 const content = computed(() => highlightCode())
 const text = props.text.replaceAll("\\n", "\n");
 
