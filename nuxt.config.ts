@@ -13,5 +13,10 @@ export default defineNuxtConfig({
   tailwindcss: {
     cssPath: '~/assets/scss/index.scss',
   },
+  app: {
+    head: {
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    }
+  }
 })
 
