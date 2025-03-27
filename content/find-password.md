@@ -1,5 +1,5 @@
 ---
-title: "Forgotten passwod"
+title: "Forgotten password"
 description: "Regex Debugging and Troubleshooting: Identify and Fix Regular Expression Issues."
 difficulty: 3
 solution: ["[a-g]", "g"]

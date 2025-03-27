@@ -118,7 +118,6 @@ function createGroupItem(items: RegExpMatchArray): GroupItemInterface[] {
       group: index
     });
   }
-  console.log(result);
   
   return result;
 }
