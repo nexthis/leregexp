@@ -7,8 +7,8 @@ const props = defineProps<{
 }>()
 
 const positions = ref<Array<GroupItemInterface>>([])
+const invalid = ref(true)
 const content = computed(() => highlightCode())
-
 const text = props.text.replaceAll("\\n", "\n");
 
 watchEffect(() => {
@@ -22,9 +22,10 @@ watchEffect(() => {
 
     if(!regex){
         console.log("Invalid RegExp");
+        invalid.value = true
         return
     }
-
+    invalid.value = false
     if(!regex.global){
         const match = text.match(regex)
         if(match === null) return
@@ -124,5 +125,5 @@ function createGroupItem(items: RegExpMatchArray): GroupItemInterface[] {
 </script>
 
 <template>
-     <p class="bg-gray-700 border-gray-600 rounded-md whitespace-pre-wrap break-words mt-5 p-4 " v-html="content" />
+     <p :class="{'border-rose-600': invalid}" class="bg-gray-700 border-gray-600 border rounded-md whitespace-pre-wrap break-words mt-5 p-4 " v-html="content" />
 </template>

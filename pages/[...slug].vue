@@ -57,6 +57,7 @@ useSeoMeta({
         <RegExpEditor  v-model="search"  />
         
         <RegExpOutput v-for="item of text" :key="item" :search="search" :text="item"/>
+        
         <div v-if="page" class="mt-5 flex justify-center">
             <button type="button" :class="{'bg-black/30':  surrender <= 3, 'bg-yellow-600  hover:bg-yellow-700 focus:ring-yellow-800': surrender >= 3}" class="focus:outline-none text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2" @click="onSurrender">Surrender ({{ surrender > 0 ? surrender : "click" }})</button>
             <button type="button" :disabled="!isComplete" class="focus:outline-none text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 bg-green-600 disabled:bg-black/30 hover:bg-green-700 focus:ring-green-800" @click="() => complete(page!.id)">Complete</button>
